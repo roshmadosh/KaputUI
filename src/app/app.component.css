@@ -1,0 +1,25 @@
+header {
+	height: 10vh;
+	background: red;
+}
+
+main {
+	background: green;
+	min-height: 90vh;
+	margin: auto;
+	position: relative;
+}
+
+nav {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+}
+
+ul {
+	display: flex;
+	justify-content: space-evenly;
+	list-style: none;
+	grid-column: 4/-1;
+}
+
+
