@@ -1,10 +1,23 @@
 <div class="login-contents">
-	<form>
+	<form #f="ngForm" (ngSubmit)="onSubmit(f)">
 		<label for="email">Email</label>
-		<input type="text" name="email"/>
+		<input 
+			required 
+			ngModel 
+			#email="ngModel" 
+			pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+			type="email" 
+			name="email"/>
+		<div *ngIf="email.touched && !email.valid">Please enter a valid email address.</div>
 		<label for="password">Password</label>
-		<input type="text" name="password"/>
-		<a href="#">New user? Create an account here.</a>
-		<button type="submit">Login</button>
+		<input 
+			required 
+			ngModel 
+			#password="ngModel" 
+			type="password" 
+			name="password"/>
+		<a routerLink="/signup">New user? Create an account here.</a>
+
+		<button type="submit" [disabled]="!f.valid">Login</button>
 	</form>
 </div>
