@@ -23,9 +23,13 @@ nav {
 
 ul {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: right;
 	list-style: none;
 	grid-column: 4/-1;
 }
+
+
+
+
 
 

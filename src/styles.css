@@ -21,6 +21,43 @@ body {
 	height: 100vh;
 }
 
+button {
+	padding: .5ch 2ch;
+	margin-right: 3ch;
+}
+
+form {
+	padding: 4rem;
+}
+form > * {
+	display: block;
+}
+form label {
+	display: block;
+}
+
+form input {
+	padding: 0.25rem 0.5rem;
+}
+
+form h1 {
+	margin-bottom: 3rem;
+}
+
+form .error-message {
+	padding-left: 1ch;
+	display: inline-block;
+}
+
+form .input-group {
+	margin-bottom: 1.6rem;
+}
+
+.button-group {
+	margin-top: 4rem;
+	display: flex !important;
+}
+
 .page {
 	position: absolute;
   left: 0;

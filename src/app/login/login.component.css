@@ -1,9 +1,9 @@
 form {
 	background: pink;
-	min-height: 32rem;
-	padding: 8rem;
 }
 
-form > * {
+a {
+	text-decoration: none;
 	display: block;
+	margin-top: 2ch;
 }
