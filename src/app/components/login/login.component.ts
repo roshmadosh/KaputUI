@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {EmailValidators} from '../validators/email.validators';
 
 @Component({
   selector: 'page-login',
@@ -11,7 +12,7 @@ export class LoginComponent {
 	form = new FormGroup({
 		email: new FormControl('', [ 
 			Validators.required,
-			Validators.pattern(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/),
+			EmailValidators.invalidFormat,
 		]),
 		password: new FormControl('', [
 			Validators.required

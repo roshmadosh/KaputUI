@@ -1,0 +1,72 @@
+<div class="signup-contents">
+	<form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+		<h1>Register</h1>
+		<br/>
+		<div class="input-group">
+			<label for="email">Email</label>
+			<input 
+				formControlName="email"
+				type="email" 
+			/>
+			<div 
+				class="error-message"
+				*ngIf="email?.touched && email?.invalid"
+			>
+				<span *ngIf="email?.errors?.required">This is a required field.</span>
+				<span *ngIf="!email?.errors?.required && email?.errors?.invalidFormat">Please enter a valid email address.</span>
+			</div>
+		</div>
+
+		<div class="input-group">
+			<label for="firstName">First Name</label>
+			<input 
+				formControlName="firstName"
+				type="text" 
+			/>
+			<div 
+				class="error-message"
+				*ngIf="firstName?.touched && firstName?.invalid"
+			>
+				<span *ngIf="firstName?.errors?.required">This is a required field.</span>
+				<span *ngIf="firstName?.errors?.minlength">Minimum of {{ firstName?.errors?.minlength.requiredLength }} characters required.</span>
+				<span *ngIf="firstName?.errors?.maxlength">Maximum of {{ firstName?.errors?.maxlength.requiredLength }} characters allowed.</span>
+			</div>
+		</div>
+		
+		<div class="input-group">
+			<label for="lastName">Last Name</label>
+			<input 
+				formControlName="lastName"
+				type="text" 
+			/>
+			<div 
+				class="error-message"
+				*ngIf="lastName?.touched && lastName?.invalid"
+			>
+				<span *ngIf="lastName?.errors?.required">This is a required field.</span>
+				<span *ngIf="lastName?.errors?.minlength">Minimum of {{ lastName?.errors?.minlength.requiredLength }} characters required.</span>
+				<span *ngIf="lastName?.errors?.maxlength">Maximum of {{ lastName?.errors?.maxlength.requiredLength }} characters allowed.</span>
+			</div>
+		</div>
+			
+		<div class="input-group">
+			<label for="password">Password</label>
+			<input 
+				formControlName="password"
+				type="password" 
+			/>
+			<div 
+				class="error-message"
+				*ngIf="password?.touched && password?.invalid"
+			>
+				<span *ngIf="password?.errors?.required">This is a required field.</span>
+			</div>
+		</div>
+		
+		<div class="button-group">
+			<button type="submit" [disabled]="form.invalid">Register</button>
+			<button type="text" routerLink="/login">Cancel</button>
+		</div>
+	</form>
+
+</div>

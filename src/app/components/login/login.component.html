@@ -12,7 +12,7 @@
 					*ngIf="email?.touched && email?.invalid"
 				>
 					<span *ngIf="email?.errors?.required">This is a required field.</span>
-					<span *ngIf="email?.errors?.pattern">Please enter a valid email address.</span>
+					<span *ngIf="!email?.errors?.required && email?.errors?.invalidFormat">Please enter a valid email address.</span>
 				</div>
 			</div>
 
