@@ -14,6 +14,8 @@ export class SignupComponent {
 		email: new FormControl('', [
 			Validators.required,
 			EmailValidators.invalidFormat,
+		], [
+			EmailValidators.isNotUnique
 		]),
 		firstName: new FormControl('', [
 			Validators.required,

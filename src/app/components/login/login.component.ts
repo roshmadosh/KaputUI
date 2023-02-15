@@ -13,6 +13,9 @@ export class LoginComponent {
 		email: new FormControl('', [ 
 			Validators.required,
 			EmailValidators.invalidFormat,
+		],
+		[
+			EmailValidators.isNotUnique
 		]),
 		password: new FormControl('', [
 			Validators.required

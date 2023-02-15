@@ -10,4 +10,16 @@ export class EmailValidators {
 			return {invalidFormat: true	}
 		} return null;
 	}
+
+	static isNotUnique(control: AbstractControl): Promise<ValidationErrors | null> {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				if ((control.value as string) === "email@email.com") {
+					resolve({ isNotUnique: true });
+				}	else {
+					resolve(null);
+				}
+			}, 1000);
+		})	
+	}
 }
