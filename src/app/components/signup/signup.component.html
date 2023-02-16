@@ -65,7 +65,7 @@
 		</div>
 		
 		<div class="button-group">
-			<button type="submit" [disabled]="form.invalid">Register</button>
+			<button type="submit" [disabled]="form.invalid || email?.pending">Register</button>
 			<button type="text" routerLink="/login">Cancel</button>
 		</div>
 	</form>

@@ -1,42 +1,42 @@
 <div class="login-contents">
-	<form [formGroup]="form">
-			<h1>Login</h1>
-			<div class="input-group">
-				<label for="email">Email</label>
-				<input 
-					formControlName="email"
-					id="email"
-				/>
-				<div 
-					class="error-message"
-					*ngIf="email?.touched && email?.invalid"
-				>
-					<span *ngIf="email?.errors?.required">This is a required field.</span>
-					<span *ngIf="!email?.errors?.required && email?.errors?.invalidFormat">Please enter a valid email address.</span>
-					<span *ngIf="email?.errors?.isNotUnique">Email is already taken.</span>
-				</div>
+	<form [formGroup]="form" (ngSubmit)="onSubmit()">
+		<h1>Login</h1>
+		<div class="input-group">
+			<label for="email">Email</label>
+			<input 
+				formControlName="email"
+				id="email"
+			/>
+			<div 
+				class="error-message"
+				*ngIf="email?.touched && email?.invalid"
+			>
+				<span *ngIf="email?.errors?.required">This is a required field.</span>
+				<span *ngIf="!email?.errors?.required && email?.errors?.invalidFormat">Please enter a valid email address.</span>
+				<span *ngIf="email?.errors?.isNotUnique">Email is already taken.</span>
 			</div>
+		</div>
 
-			<div class="input-group">
-				<label for="password">Password</label>
-				<input 
-					formControlName="password"	
-					type="password" 
-					id="password"
-				/>
-				<div 
-					class="error-message"
-					*ngIf="password?.touched && password?.invalid"
-				>
-					<span *ngIf="password?.errors?.required">This is a required field.</span>
-				</div>
+		<div class="input-group">
+			<label for="password">Password</label>
+			<input 
+				formControlName="password"	
+				type="password" 
+				id="password"
+			/>
+			<div 
+				class="error-message"
+				*ngIf="password?.touched && password?.invalid"
+			>
+				<span *ngIf="password?.errors?.required">This is a required field.</span>
 			</div>
+		</div>
 
-			<a routerLink="/signup">New user? Create an account here.</a>
-			<a routerLink="#">Forgot your password?</a>
+		<a routerLink="/signup">New user? Create an account here.</a>
+		<a routerLink="#">Forgot your password?</a>
 
-			<div class="button-group">
-				<button type="submit" [disabled]="form.invalid">Login</button>
-			</div>
-		</form>
+		<div class="button-group">
+			<button type="submit" [disabled]="form.invalid || email?.pending">Login</button>
+		</div>
+	</form>
 </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UsersService} from 'src/app/services/users.service';
 import {EmailValidators} from '../validators/email.validators';
 
 @Component({
@@ -8,22 +9,21 @@ import {EmailValidators} from '../validators/email.validators';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+	constructor(private usersService: UsersService){}
 	
 	form = new FormGroup({
 		email: new FormControl('', [ 
 			Validators.required,
 			EmailValidators.invalidFormat,
-		],
-		[
-			EmailValidators.isNotUnique
 		]),
 		password: new FormControl('', [
 			Validators.required
 		])
 	})
 
-	onSubmit(f: any) {
-		console.log(f.value);
+	onSubmit() {
+		this.usersService.loginBasic(this.email?.value, this.password?.value);
 	}
 
 	get email() {
