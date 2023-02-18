@@ -23,7 +23,12 @@ export class LoginComponent {
 	})
 
 	onSubmit() {
-		this.usersService.loginBasic(this.email?.value, this.password?.value);
+		this.usersService.loginBasic(this.email?.value, this.password?.value)
+			.subscribe(resp => {
+				console.log(resp);
+			}, obj => {
+				console.log(obj.error.message);
+			})
 	}
 
 	get email() {
