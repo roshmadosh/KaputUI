@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { AppError } from 'src/app/error/app-error';
 import {UsersService} from 'src/app/services/users.service';
 import {EmailValidators} from '../validators/email.validators';
 
@@ -24,11 +25,11 @@ export class LoginComponent {
 
 	onSubmit() {
 		this.usersService.loginBasic(this.email?.value, this.password?.value)
-			.subscribe(resp => {
+			.subscribe((resp: any) => {
 				console.log(resp);
-			}, obj => {
-				console.log(obj.error.message);
-			})
+			}, (error: AppError) => {
+        console.log(error.message);
+      })
 	}
 
 	get email() {
