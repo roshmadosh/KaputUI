@@ -5,32 +5,19 @@ import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { InvalidCredentialsError } from '../error/invalid-credentials-error';
 import { AppError } from '../error/app-error';
+import {DataService} from './data.service';
+import {DOMAIN} from '../constants';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class UsersService extends DataService {
 
-	private url = 'http://localhost:8080/api';
-
-  constructor(private http: HttpClient) {
+  constructor(http: HttpClient) {
+		super(DOMAIN.DEV + '/users', http);
 	}
 
-	loginBasic(email: string, password: string): Observable<any> {
-		const b64 = btoa(email + ":" + password);
-		const headerValue = "Basic " + b64;
-
-		return this.http.post(this.url + '/login', null, {
-			headers: new HttpHeaders({ 'Authorization': headerValue })
-		  }).pipe(catchError((error: HttpErrorResponse) => {
-        if (error.status === 400) {
-          return throwError(new InvalidCredentialsError(error));
-        } return throwError(new AppError(error)); 
-      }));
-	}
-
-	getAllUsers() {
-
-	}
-	
 }
+
+
+

@@ -5,8 +5,8 @@ export class AppError {
 	constructor(private originalError: HttpErrorResponse){
   }
 
-  get message() {
-    return this.originalError.error.message;
+  get message(): string {
+    return this.originalError.error.message ?? "no message available";
   }
  
 }
